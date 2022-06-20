@@ -7,9 +7,11 @@ const ProductCard = (productData) => {
     const [canHovering, setCanHovering] = useState(false);
 
     // при первом нажатии на карточку - убираем hover
-    const changeCardChosen = () => {
-        setIsCardChosen((prev) => !prev);
-        setCanHovering(false);
+    const changeCardSelection = () => {
+        if (data.available) {
+            setIsCardChosen((prev) => !prev);
+            setCanHovering(false);
+        }
     }
     // после отвода мыши возвращаем hover
     const handleMouseLeave = () => {
@@ -32,7 +34,7 @@ const ProductCard = (productData) => {
                         : isCardChosen && data.available && cl.cardChecked}
                 `}
                 onMouseLeave={handleMouseLeave}
-                onClick={() => changeCardChosen()}
+                onClick={() => changeCardSelection()}
             >
                 {/* внутренний div с текстом и картинкой */}
                 <div className={data.available ? cl.card__inner : cl.unavailable__inner}>
@@ -74,7 +76,7 @@ const ProductCard = (productData) => {
                     <div>
                         {"Чего сидишь? Порадуй котэ, "}
                         <strong className={cl.card__buy}
-                                onClick={changeCardChosen}
+                                onClick={changeCardSelection}
                         >купи</strong>
                         <strong>.</strong>
                     </div>
