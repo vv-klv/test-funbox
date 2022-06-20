@@ -18,7 +18,10 @@ const ProductCard = (productData) => {
 
     return (
         // обертка для карточки и подписи
-        <div className={cl.cardWrapper}>
+        <div
+            className={cl.cardWrapper}
+            tabIndex={data.available && 1}
+        >
             {/* div для имитации границы */}
             <div
                 className={`
