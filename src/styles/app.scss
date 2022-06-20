@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Exo2';
+  font-style: normal;
+  src: local('Exo2'), url('../fonts/Exo2.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Trebuchet MS';
+  font-style: normal;
+  src: local('Trebuchet MS'), url('../fonts/TrebuchetMS.woff') format('woff');
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  background: url("../assets/images/background.jpg");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100vh;
+
+  & .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  & .question {
+    font-family: "Exo2", -apple-system, Segoe UI, Ubuntu, Arial, sans-serif;
+    font-weight: 100;
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-align: center;
+  }
+
+  .cards__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+  }
+}
+
+
