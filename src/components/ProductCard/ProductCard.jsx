@@ -25,16 +25,20 @@ const ProductCard = (productData) => {
                 className={`
                     ${cl.card} 
                     ${!data.available && cl.unavailable__card}
-                    ${!canHovering 
-                        ? isCardChosen && data.available && cl.cardChecked
-                        : isCardChosen && data.available && cl.cardCheckedWithHover}
+                    ${canHovering 
+                        ? isCardChosen && data.available && cl.cardCheckedWithHover
+                        : isCardChosen && data.available && cl.cardChecked}
                 `}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => changeCardChosen()}
             >
                 {/* внутренний div с текстом и картинкой */}
                 <div className={data.available ? cl.card__inner : cl.unavailable__inner}>
-                    <div className={cl.card__suptitle}>{data.suptitle}</div>
+                    {
+                        canHovering
+                            ? <div style={{color: "#e62e7a"}}>Котэ не одобряет?</div>
+                            : <div className={cl.card__suptitle}>{data.suptitle}</div>
+                    }
                     <div className={cl.card__title}>{data.title}</div>
                     <div className={cl.card__subtitle}>{data.subtitle}</div>
                     {
