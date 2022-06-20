@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import cl from "./ProductCard.module.scss";
 
-
 const ProductCard = (productData) => {
     const data = productData.productData;
     const [isCardChosen, setIsCardChosen] = useState(false);
     const [canHovering, setCanHovering] = useState(false);
 
-    // как только нажали карточку - убираем hover
+    // при первом нажатии на карточку - убираем hover
     const changeCardChosen = () => {
-        setIsCardChosen(!isCardChosen);
+        setIsCardChosen((prev) => !prev);
         setCanHovering(false);
     }
     // после отвода мыши возвращаем hover
@@ -25,7 +24,7 @@ const ProductCard = (productData) => {
                 className={`
                     ${cl.card} 
                     ${!data.available && cl.unavailable__card}
-                    ${canHovering 
+                    ${canHovering
                         ? isCardChosen && data.available && cl.cardCheckedWithHover
                         : isCardChosen && data.available && cl.cardChecked}
                 `}
@@ -42,7 +41,7 @@ const ProductCard = (productData) => {
                     <div className={cl.card__title}>{data.title}</div>
                     <div className={cl.card__subtitle}>{data.subtitle}</div>
                     {
-                        // кол-во порций и доп. информация
+                        // количество порций и дополнительная информация
                         data.descr.map((item, key) => {
                         return <div className={cl.card__descr} key={key}>
                                    <strong>{item.amount}</strong>
@@ -62,35 +61,32 @@ const ProductCard = (productData) => {
                     <div className={cl.circle__weightUnit}>{data.weightUnits}</div>
                 </div>
                 {/* слой для заливки */}
-                <div className={data.available ? '' : cl.unavailable}></div>
+                <div className={!data.available && cl.unavailable}></div>
             </div>
-            <div
-                className={cl.card__caption}
-            >
+            {/* подпись к карточке */}
+            <div className={cl.card__caption}>
                 {
-                    (isCardChosen && data.available)
-                        ? <div>{data.extra}</div>
-                        : ""
+                    // подпись по умолчанию, если карточка не выбрана
+                    !isCardChosen && data.available &&
+                    <div>
+                        {"Чего сидишь? Порадуй котэ, "}
+                        <strong className={cl.card__buy}
+                                onClick={changeCardChosen}
+                        >купи</strong>
+                        <strong>.</strong>
+                    </div>
                 }
                 {
-                    (!isCardChosen && data.available)
-                        ?  <div>{"Чего сидишь? Порадуй котэ, "}
-                               <strong className={cl.card__buy}
-                                       onClick={changeCardChosen}
-                               >купи</strong>
-                               <strong>.</strong>
-                           </div>
-                        : ""
+                    // подпись, если карточка выбрана
+                    isCardChosen && data.available && <div>{data.extra}</div>
                 }
                 {
-                    !data.available
-                        ? <div className={cl.unavailable__caption}>
-                              {`Печалька, ${data.subtitle} закончился`}
-                          </div>
-                        : ""
+                    // подпись, если карточка недоступна
+                    !data.available && <div className={cl.unavailable__caption}>
+                                           {`Печалька, ${data.subtitle} закончился`}
+                                       </div>
                 }
             </div>
-
         </div>
     );
 };
