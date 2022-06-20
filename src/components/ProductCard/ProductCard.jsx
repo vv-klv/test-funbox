@@ -36,7 +36,7 @@ const ProductCard = (productData) => {
                 <div className={data.available ? cl.card__inner : cl.unavailable__inner}>
                     {
                         canHovering
-                            ? <div style={{color: "#e62e7a"}}>Котэ не одобряет?</div>
+                            ? <div className={cl.card__suptitle} style={{color: "#e62e7a"}}>Котэ не одобряет?</div>
                             : <div className={cl.card__suptitle}>{data.suptitle}</div>
                     }
                     <div className={cl.card__title}>{data.title}</div>
