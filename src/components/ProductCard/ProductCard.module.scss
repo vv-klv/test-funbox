@@ -1,0 +1,205 @@
+@import "../../styles/variables.module";
+
+.cardWrapper {
+  font-family: $ff-trebuchet;
+
+  &:not(:first-child) {
+    margin-left: 5rem;
+  }
+
+  @media (max-width: 1120px) {
+    margin-bottom: 5rem;
+  }
+  @media (max-width: 1025px) {
+    margin-bottom: 5rem;
+    &:nth-child(2n + 1) {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &:nth-child(2n) {
+      margin-left: 0;
+    }
+  }
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 30rem;
+  width: 20rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.1s linear;
+
+  border-radius: 0.75rem;
+  background-color: #1698d9;
+  -webkit-clip-path: $card-shape;
+  clip-path: $card-shape;
+
+  &:hover {
+    background-color: #2ea8e6;
+  }
+
+  &Checked {
+    background-color: #d81667;
+
+    &:hover {
+      background-color: #d81667;
+    }
+  }
+
+  &CheckedWithHover {
+    background-color: #d81667;
+
+    &:hover {
+      background-color: #e42e7a;
+    }
+  }
+
+  .card__inner {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    right: 0.25rem;
+    bottom: 0.25rem;
+    padding-left: 3rem;
+    padding-top: 1rem;
+    overflow: hidden;
+
+    border-radius: .5rem;
+    background-color: white;
+    -webkit-clip-path: $card-shape;
+    clip-path: $card-shape;
+  }
+
+  &__suptitle {
+    font-size: 1rem;
+    font-weight: 400;
+    color: $text-gray;
+    margin-bottom: .3125rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  &__descr {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1rem;
+    color: $text-gray;
+  }
+
+  &__weight {
+    display: flex;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    background-color: #1698d9;
+  }
+
+  &__image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+
+  &__circle {
+    display: flex;
+    flex-direction: column;
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 3;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background-color: inherit;
+    color: white;
+  }
+
+  &__caption {
+    font-size: 0.8125rem;
+    text-align: center;
+    color: white;
+    margin-top: 0.875rem;
+  }
+
+  &__buy {
+    font-weight: 400;
+    color: #1698d9;
+    text-decoration: underline dashed;
+    text-underline-offset: 0.15rem;
+    cursor: pointer;
+
+    & + strong {
+      color: #1698d9;
+    }
+
+    &:hover {
+      color: #2ea8e6;
+    }
+  }
+}
+
+
+.circle__weight {
+  font-size: 2.625rem;
+}
+
+.circle__weightUnit {
+  font-size: 1.3125rem;
+}
+
+.unavailable {
+  position: absolute;
+  padding: 0.25rem;
+  top: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  border-radius: .5rem;
+  clip-path: $card-shape;
+  background-color: #f2f2f2;
+  opacity: .5;
+
+  &__card {
+    composes: card;
+    background-color: #b3b3b3;
+    cursor: auto;
+
+    &:hover {
+      background-color: #b3b3b3;;
+    }
+  }
+
+  &__inner {
+    composes: card__inner;
+
+    & > * {
+      color: #b3b3b3;
+    }
+  }
+
+  &__caption {
+    color: #ffff66;
+  }
+}
+

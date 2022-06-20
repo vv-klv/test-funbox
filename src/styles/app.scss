@@ -53,6 +53,10 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
+
+    @media (max-width: 1025px) {
+      padding-bottom: -5rem;
+    }
   }
 }
 

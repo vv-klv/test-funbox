@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/app.scss'
+import ProductCard from './components/ProductCard/ProductCard';
+import catFood from './database/catFood.json'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <div className="container">
+                <div className="wrapper">
+                    <div className="question">
+                        Ты сегодня покормил кота?
+                    </div>
+                    <div className="cards__wrapper">
+                        {catFood.map(item => {
+                            return <ProductCard productData={item}
+                                                key={item.id}/>
+                        })}
+                    </div>
+                </div>
+            </div>
+        </div>
+)
+    ;
 }
 
 export default App;
