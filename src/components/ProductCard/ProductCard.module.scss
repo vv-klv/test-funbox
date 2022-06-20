@@ -188,7 +188,7 @@
   &__card {
     composes: card;
     background-color: #b3b3b3;
-    cursor: auto;
+    cursor: not-allowed;
 
     &:hover {
       background-color: #b3b3b3;;
