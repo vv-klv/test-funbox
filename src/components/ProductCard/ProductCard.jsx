@@ -22,16 +22,16 @@ const ProductCard = (productData) => {
         // обертка для карточки и подписи
         <div
             className={cl.cardWrapper}
-            tabIndex={data.available && 1}
+            tabIndex={data.available ? 1 : -1}
         >
             {/* div для имитации границы */}
             <div
                 className={`
                     ${cl.card} 
-                    ${!data.available && cl.unavailable__card}
                     ${canHovering
-                        ? isCardChosen && data.available && cl.cardCheckedWithHover
-                        : isCardChosen && data.available && cl.cardChecked}
+                        ? isCardChosen && cl.cardCheckedWithHover
+                        : isCardChosen && cl.cardChecked}
+                    ${!data.available ? cl.unavailable__card : '' }
                 `}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => changeCardSelection()}

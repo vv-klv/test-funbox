@@ -8,10 +8,14 @@
   }
 
   @media (max-width: 1120px) {
-    margin-bottom: 5rem;
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
   }
   @media (max-width: 1025px) {
-    margin-bottom: 5rem;
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
     &:nth-child(2n + 1) {
       margin-left: 0;
     }
@@ -145,10 +149,10 @@
   }
 
   &__buy {
+    display: inline-block;
     font-weight: 400;
     color: #1698d9;
-    text-decoration: underline dashed;
-    text-underline-offset: 0.15rem;
+    border-bottom: 1px dashed #1698d9;
     cursor: pointer;
 
     & + strong {

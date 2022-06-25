@@ -26,24 +26,31 @@ body {
 }
 
 .container {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   height: 100%;
   min-height: 100vh;
+  padding: 1rem;
 
-  & .wrapper {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    overflow: hidden;
+  }
+
+  .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-  }
 
-  .cards__wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
   }
 }
 
